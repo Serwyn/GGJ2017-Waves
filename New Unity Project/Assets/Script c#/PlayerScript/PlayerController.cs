@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
-            //stop move
+            rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
         };
 
         if (Input.GetButtonDown(Jump))
