@@ -8,6 +8,7 @@ public class PlayerState : MonoBehaviour {
     public bool hasJump;
     public bool isOnWall;
     public float life;
+    public float rpos;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,7 @@ public class PlayerState : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        relativePosition();
 	}
 
     void OnCollisionEnter(Collision coll)
@@ -24,6 +26,19 @@ public class PlayerState : MonoBehaviour {
         if (coll.gameObject.tag == "Ground")
         {
             isLanded = true;
+        }
+    }
+
+    void relativePosition()
+    {
+        rpos = gameObject.GetComponent<PlayerController>().otherPlayer.transform.position.x- this.transform.position.x;
+        if (rpos > 0)
+        {
+            transform.localEulerAngles = Vector3.up*180;
+        }
+        else
+        {
+            transform.localEulerAngles = Vector3.zero;
         }
     }
 }

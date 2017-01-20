@@ -7,6 +7,7 @@ public class Attacks : MonoBehaviour {
     public GameObject onde;
     public string HighAttack;
     public float highWaveSpeed = 8;
+    
 	// Use this for initialization
 	void Start () {
 		
@@ -24,7 +25,13 @@ public class Attacks : MonoBehaviour {
     {
         GameObject attack = Instantiate(onde, new Vector3(transform.position.x, transform.position.y, (transform.position.z+1)%2), Quaternion.identity);
         Rigidbody aRB = attack.GetComponent<Rigidbody>();
-        aRB.velocity = new Vector3(highWaveSpeed, 0, 0);
+
+        float rpos = this.gameObject.GetComponent<PlayerState>().rpos;
+        if (rpos < 0)
+        {
+            attack.transform.localEulerAngles = Vector3.up * 180;
+        }
+        aRB.velocity = Vector3.right * highWaveSpeed * Mathf.Sign(rpos);
     }
 
 
