@@ -6,6 +6,7 @@ public class Attacks : MonoBehaviour {
 
     public GameObject onde;
     public string HighAttack;
+    public float highWaveSpeed = 8;
 	// Use this for initialization
 	void Start () {
 		
@@ -21,9 +22,9 @@ public class Attacks : MonoBehaviour {
 
     void highAttack()
     {
-        GameObject attack = Instantiate(onde, transform.position, Quaternion.identity);
-        Rigidbody2D aRB = attack.GetComponent<Rigidbody2D>();
-        aRB.velocity = new Vector2(1, 0);
+        GameObject attack = Instantiate(onde, new Vector3(transform.position.x, transform.position.y, (transform.position.z+1)%2), Quaternion.identity);
+        Rigidbody aRB = attack.GetComponent<Rigidbody>();
+        aRB.velocity = new Vector3(highWaveSpeed, 0, 0);
     }
 
 
