@@ -18,28 +18,29 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetButton("HorizontalMove"))
         {
-            HorizontalMove();
+            horizontalMove();
         }
+        else { rb.velocity = Vector2.zero; };
 
-        if (Input.GetButtonDown("jump"))
+        if (Input.GetButtonDown("Jump"))
         {
             jump();
         }
 
-        if (Input.GetButtonDown("crouch"))
+        if (Input.GetButtonDown("Crouch"))
         {
             crouch();
         }
 	}
 
-    public void HorizontalMove()
+    public void horizontalMove()
     {
-        
+        rb.velocity = new Vector2(1, 0) * Input.GetAxis("HorizontalMove") * moveSpeed;
     }
 
     public void jump()
     {
-
+        rb.AddForce(new Vector2(0, 1) * jumpForce);
     }
 
     public void crouch()
