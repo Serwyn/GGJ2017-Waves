@@ -19,7 +19,7 @@ public class PlayerState : MonoBehaviour {
 	void Update () {
 	}
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnCollisionEnter(Collision coll)
     {
         if (coll.gameObject.tag == "Ground")
         {
