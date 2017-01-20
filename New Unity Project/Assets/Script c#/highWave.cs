@@ -21,7 +21,7 @@ public class highWave : MonoBehaviour {
 
         Debug.Log("collision");
 
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Shield")
         {
             Destroy(this.gameObject);
         }

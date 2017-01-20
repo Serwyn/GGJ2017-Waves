@@ -21,11 +21,18 @@ public class PlayerState : MonoBehaviour {
         relativePosition();
 	}
 
-    void OnCollisionEnter(Collision coll)
+    void OnCollisionStay(Collision coll)
     {
         if (coll.gameObject.tag == "Ground")
         {
             isLanded = true;
+        }
+    }
+    void OnCollisionExit(Collision coll)
+    {
+        if (coll.gameObject.tag == "Ground")
+        {
+            isLanded = false;
         }
     }
 
