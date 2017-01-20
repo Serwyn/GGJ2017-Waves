@@ -75,8 +75,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script c#\Attacks.cs" />
-    <Compile Include="Assets\Script c#\PlayerController.cs" />
     <Compile Include="Assets\Script c#\PlayerScript\Attacks.cs" />
     <Compile Include="Assets\Script c#\PlayerScript\PlayerController.cs" />
     <Compile Include="Assets\Script c#\PlayerScript\PlayerState.cs" />
