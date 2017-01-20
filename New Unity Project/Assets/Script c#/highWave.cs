@@ -18,7 +18,7 @@ public class highWave : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "player1")
+        if (col.gameObject.tag == "Player")
         {
             DestroyImmediate(this);
         }
