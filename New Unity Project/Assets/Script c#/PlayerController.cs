@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public int moveSpeed;
-    public int jumpForce;
+    public float moveSpeed;
+    public float jumpForce;
+    public float maxSpeed;
     Rigidbody2D rb;
 
 	// Use this for initialization
@@ -15,32 +16,41 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (Input.GetButton("HorizontalMove"))
+        if (true)
         {
-            horizontalMove();
+            if (Input.GetButton("HorizontalMove"))
+            {
+                horizontalMove();
+            }
+            else
+            {
+                //stop move
+            };
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                jump();
+            }
+
+            if (Input.GetButtonDown("Crouch"))
+            {
+                crouch();
+            }
         }
-        else { rb.velocity = Vector2.zero; };
-
-        if (Input.GetButtonDown("Jump"))
+        else
         {
-            jump();
-        }
-
-        if (Input.GetButtonDown("Crouch"))
-        {
-            crouch();
+            //set Velocity
         }
 	}
 
     public void horizontalMove()
     {
-        rb.velocity = new Vector2(1, 0) * Input.GetAxis("HorizontalMove") * moveSpeed;
+        rb.velocity =new Vector2(0, rb.velocity.y) + Vector2.right * Input.GetAxisRaw("HorizontalMove") * moveSpeed;
     }
 
     public void jump()
     {
-        rb.AddForce(new Vector2(0, 1) * jumpForce);
+        rb.velocity = new Vector2(rb.velocity.x, 0) + Vector2.up * jumpForce;
     }
 
     public void crouch()
