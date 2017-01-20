@@ -5,6 +5,7 @@ using UnityEngine;
 public class Attacks : MonoBehaviour {
 
     public GameObject onde;
+    public string HighAttack;
 	// Use this for initialization
 	void Start () {
 		
@@ -12,7 +13,7 @@ public class Attacks : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("HighAttack"))
+        if (Input.GetButtonDown(HighAttack))
         {
             highAttack();
         }

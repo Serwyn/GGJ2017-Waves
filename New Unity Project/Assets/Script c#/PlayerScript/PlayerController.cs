@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour {
     Rigidbody2D rb;
     PlayerState playerState;
 
+    public string HorizontalMove;
+    public string Jump;
+    public string Crouch;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -19,7 +23,7 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("HorizontalMove"))
+        if (Input.GetButton(HorizontalMove))
         {
             horizontalMove();
         }
@@ -28,12 +32,12 @@ public class PlayerController : MonoBehaviour {
             //stop move
         };
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown(Jump))
         {
             jump();
         }
 
-        if (Input.GetButtonDown("Crouch"))
+        if (Input.GetButtonDown(Crouch))
         {
             crouch();
         }
@@ -41,7 +45,7 @@ public class PlayerController : MonoBehaviour {
 
     public void horizontalMove()
     {
-        rb.velocity =new Vector2(0, rb.velocity.y) + Vector2.right * Input.GetAxisRaw("HorizontalMove") * moveSpeed;
+        rb.velocity =new Vector2(0, rb.velocity.y) + Vector2.right * Input.GetAxisRaw(HorizontalMove) * moveSpeed;
     }
 
     public void jump()
