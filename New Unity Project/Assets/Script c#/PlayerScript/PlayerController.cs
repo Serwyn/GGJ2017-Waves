@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     public float maxSpeed;
     Rigidbody rb;
     PlayerState playerState;
+    public GameObject otherPlayer;
 
     public string HorizontalMove;
     public string Jump;

@@ -7,7 +7,7 @@ public class highWave : MonoBehaviour {
 	// Use this for initialization
     private float lifespan = 4.0f;
 	void Start () {
-        Destroy(this, lifespan);
+        Destroy(this.gameObject, lifespan);
 		
 	}
 	
