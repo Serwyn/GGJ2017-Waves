@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float moveSpeed;
     public float jumpForce;
     public float maxSpeed;
-    Rigidbody2D rb;
+    Rigidbody rb;
     PlayerState playerState;
 
     public string HorizontalMove;
@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
         playerState = GetComponent<PlayerState>();
 	}
 
@@ -45,14 +45,14 @@ public class PlayerController : MonoBehaviour {
 
     public void horizontalMove()
     {
-        rb.velocity =new Vector2(0, rb.velocity.y) + Vector2.right * Input.GetAxisRaw(HorizontalMove) * moveSpeed;
+        rb.velocity =new Vector3(0, rb.velocity.y, 0) + Vector3.right * Input.GetAxisRaw(HorizontalMove) * moveSpeed;
     }
 
     public void jump()
     {
         if (playerState.isLanded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, 0) + Vector2.up * jumpForce;
+            rb.velocity = new Vector3(rb.velocity.x, 0, 0) + Vector3.up * jumpForce;
             playerState.isLanded = false;
         }
     }

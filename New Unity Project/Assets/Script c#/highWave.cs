@@ -16,11 +16,14 @@ public class highWave : MonoBehaviour {
 		
 	}
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
+
+        Debug.Log("collision");
+
         if (col.gameObject.tag == "Player")
         {
-            DestroyImmediate(this);
+            Destroy(this.gameObject);
         }
 
     }
