@@ -6,9 +6,11 @@ public class inGameMenu : MonoBehaviour {
 
     public GameObject world;
 
+    public worldController controlWorld;
+
 	// Use this for initialization
 	void Start () {
-		
+        controlWorld = world.GetComponent<worldController>();
 	}
 	
 	// Update is called once per frame
@@ -18,10 +20,11 @@ public class inGameMenu : MonoBehaviour {
 
     public void restart()
     {
-
+        controlWorld.restartWorld();
     }
     public void exit()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("StartScene");
+        
     }
 }
