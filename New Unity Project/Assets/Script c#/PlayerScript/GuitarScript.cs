@@ -16,8 +16,8 @@ public class GuitarScript : MonoBehaviour {
 	
     public AudioClip getGuitSound()
     {
-        AudioClip sound = guit[guitNbr % guit.Count];
-        return sound;
+        //AudioClip sound = guit[guitNbr % guit.Count];
+        return /*sound*/ null;
     }
 
 
