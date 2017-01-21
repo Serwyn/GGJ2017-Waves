@@ -116,8 +116,13 @@ public class PlayerController : MonoBehaviour {
         {
 
             playerState.isCrouched = crouched;
-            if (crouched && playerState.isLanded)
+            if (crouched)
             {
+                BoxCollider boxco = this.GetComponent<BoxCollider>();
+                float size = boxco.size.y;
+                boxco.size = new Vector3(boxco.size.x, boxco.size.y / 2, boxco.size.z);
+                boxco.center = new Vector3(boxco.center.x, boxco.center.y - size / 4, boxco.center.z);
+
                 this.GetComponent<SpriteRenderer>().sprite = this.crouchedSprite;
                 this.GetComponent<Animator>().enabled = false;
                 rb.velocity = new Vector3(0, 0, 0);
@@ -125,6 +130,11 @@ public class PlayerController : MonoBehaviour {
             }
             else
             {
+                BoxCollider boxco = this.GetComponent<BoxCollider>();
+                float size = boxco.size.y;
+                boxco.size = new Vector3(boxco.size.x, boxco.size.y * 2, boxco.size.z);
+                boxco.center = new Vector3(boxco.center.x, boxco.center.y + size/2, boxco.center.z);
+
                 this.GetComponent<SpriteRenderer>().sprite = this.normalSprite;
             }
         }

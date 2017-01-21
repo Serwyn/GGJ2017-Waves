@@ -10,6 +10,10 @@ public class Shield : MonoBehaviour {
         Destroy(this.gameObject, lifespan);
 		
 	}
-	
+    public void PlayAudioSource(AudioClip audio)
+    {
+        GetComponent<AudioSource>().PlayOneShot(audio);
+    }
+
 
 }

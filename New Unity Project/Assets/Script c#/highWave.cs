@@ -19,4 +19,8 @@ public class highWave : MonoBehaviour {
         }
 
     }
+    public void PlayAudioSource(AudioClip audio)
+    {
+        GetComponent<AudioSource>().PlayOneShot(audio);
+    }
 }

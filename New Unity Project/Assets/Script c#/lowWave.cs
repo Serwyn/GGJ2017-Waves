@@ -21,4 +21,8 @@ public class lowWave : MonoBehaviour {
         }
 
     }
+    public void PlayAudioSource(AudioClip audio)
+    {
+        GetComponent<AudioSource>().PlayOneShot(audio);
+    }
 }
