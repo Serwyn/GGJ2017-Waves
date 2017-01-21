@@ -7,11 +7,12 @@ public class PlayerState : MonoBehaviour {
     public bool isLanded;
     public bool hasJump;
     public bool isOnWall;
+    public const float MAXLIFE=100f;
     public float life;
 
 	// Use this for initialization
 	void Start () {
-        life = 100f;
+        life = MAXLIFE;
         isLanded = false;
 	}
 	
