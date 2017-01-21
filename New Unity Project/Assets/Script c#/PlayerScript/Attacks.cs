@@ -45,6 +45,7 @@ public class Attacks : MonoBehaviour {
         if (Input.GetButtonDown(HighAttack))
         {
             highAttack();
+            AudioClip.Instantiate(GetComponent<GuitarScript>().getGuitSound());
         }
 
         if (Input.GetButtonDown(LowAttack))
