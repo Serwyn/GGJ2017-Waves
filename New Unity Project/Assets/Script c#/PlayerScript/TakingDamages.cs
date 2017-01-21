@@ -18,13 +18,14 @@ public class TakingDamages : MonoBehaviour
 	void Update () {
 		
 	}
-    /*
-    void OnCollisionEnter(Collision col)
+    
+    void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "onde")
         {
             ps4.life -= highWaveDamages;
         }
 
-    }*/
+    }
+
 }
