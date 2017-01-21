@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour {
         {
 
             playerState.isCrouched = crouched;
-            if (crouched)
+            if (crouched && !playerState.isCrouched)
             {
                 BoxCollider boxco = this.GetComponent<BoxCollider>();
                 float size = boxco.size.y;
@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour {
                 rb.velocity = new Vector3(0, 0, 0);
 
             }
-            else
+            else if(playerState.isCrouched)
             {
                 BoxCollider boxco = this.GetComponent<BoxCollider>();
                 float size = boxco.size.y;

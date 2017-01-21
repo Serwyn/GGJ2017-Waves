@@ -96,7 +96,7 @@ public class worldController : MonoBehaviour {
     {
 
 
-        totalWin = player1Winshare + player2Winshare;
+        totalWin = Mathf.Max(player1Winshare, player2Winshare);
         if (totalWin == maxWin)
         {
             endGame();
