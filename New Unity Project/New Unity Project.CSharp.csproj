@@ -81,6 +81,7 @@
     <Compile Include="Assets\Script c#\PlayerScript\TakingDamages.cs" />
     <Compile Include="Assets\Script c#\Shield.cs" />
     <Compile Include="Assets\Script c#\UIScripts\LifeScript.cs" />
+    <Compile Include="Assets\Script c#\UIScripts\StartMenuScript.cs" />
     <Compile Include="Assets\Script c#\highWave.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
