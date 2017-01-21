@@ -18,7 +18,7 @@ public class PlayerState : MonoBehaviour {
         reset();
     }
 
-    void reset()
+    public void reset()
     {
         life = MAXLIFE;
         isLanded = false;
