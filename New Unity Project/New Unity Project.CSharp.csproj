@@ -84,6 +84,7 @@
     <Compile Include="Assets\Script c#\UIScripts\LifeScript.cs" />
     <Compile Include="Assets\Script c#\UIScripts\StartMenuScript.cs" />
     <Compile Include="Assets\Script c#\UIScripts\inGameMenu.cs" />
+    <Compile Include="Assets\Script c#\WorldScript\soundList.cs" />
     <Compile Include="Assets\Script c#\WorldScript\worldController.cs" />
     <Compile Include="Assets\Script c#\highWave.cs" />
     <Compile Include="Assets\Script c#\lowWave.cs" />
