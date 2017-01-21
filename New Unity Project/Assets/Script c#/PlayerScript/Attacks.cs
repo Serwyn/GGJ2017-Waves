@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Attacks : MonoBehaviour {
 
-    public int rockNbr;
-    public int trumpNbr;
-
     public GameObject onde;
     public GameObject lowWave;
     public GameObject shield;
@@ -34,9 +31,6 @@ public class Attacks : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody>();
         ps = this.GetComponent<PlayerState>();
-        trumpNbr = 0;
-        rockNbr = 0;
-
 
     }
 	
@@ -45,8 +39,6 @@ public class Attacks : MonoBehaviour {
         if (Input.GetButtonDown(HighAttack))
         {
             highAttack();
-            Debug.Log("wtf");
-            AudioClip sound = Instantiate(GetComponent<GuitarScript>().getGuitSound());
         }
 
         if (Input.GetButtonDown(LowAttack))
