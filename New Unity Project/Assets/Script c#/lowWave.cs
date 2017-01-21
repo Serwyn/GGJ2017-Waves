@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class highWave : MonoBehaviour {
+public class lowWave : MonoBehaviour {
 
-	// Use this for initialization
+    // Use this for initialization
     public float lifespan;
-	void Start () {
+    void Start()
+    {
         Destroy(this.gameObject, lifespan);
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     void OnTriggerEnter(Collider col)
     {

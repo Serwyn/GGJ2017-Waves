@@ -83,6 +83,7 @@
     <Compile Include="Assets\Script c%23\UIScripts\LifeScript.cs" />
     <Compile Include="Assets\Script c%23\UIScripts\StartMenuScript.cs" />
     <Compile Include="Assets\Script c%23\highWave.cs" />
+    <Compile Include="Assets\Script c%23\lowWave.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
