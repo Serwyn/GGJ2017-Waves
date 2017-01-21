@@ -13,16 +13,18 @@ public class PlayerController : MonoBehaviour {
     public Sprite crouchedSprite;
     public Sprite normalSprite;
     public Sprite jumpSprite;
+    public Sprite deadSprite;
 
     public string HorizontalMove;
     public string Jump;
     public string Crouch;
-
+    worldController wc;
 
    
 
     // Use this for initialization
     void Start () {
+        wc = Camera.main.GetComponent<worldController>();
         rb = GetComponent<Rigidbody>();
         playerState = GetComponent<PlayerState>();
 	}
@@ -30,37 +32,45 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton(HorizontalMove))
+        if (!wc.isPaused())
         {
-            horizontalMove(true);
+            if (Input.GetButton(HorizontalMove))
+            {
+                horizontalMove(true);
+            }
+            else if (Input.GetButtonUp(HorizontalMove))
+            {
+                horizontalMove(false);
+            }
+
+
+            else if (playerState.isLanded && !playerState.isCrouched)
+            {
+                this.GetComponent<SpriteRenderer>().sprite = this.normalSprite;
+            };
+            if (Input.GetButtonDown(Crouch))
+            {
+                crouch(true);
+            }
+
+            if (Input.GetButtonDown(Jump))
+            {
+                jump();
+            }
+
+
+
+            if (Input.GetButtonUp(Crouch))
+            {
+                crouch(false);
+            }
         }
-        else if (Input.GetButtonUp(HorizontalMove))
+        else if (playerState.isLanded)
         {
-            horizontalMove(false);
-        }
-
-        
-        else if (playerState.isLanded && !playerState.isCrouched)
-        {
-            this.GetComponent<SpriteRenderer>().sprite = this.normalSprite;
-        };
-        if (Input.GetButtonDown(Crouch))
-        {
-            crouch(true);
-        }
-
-        if (Input.GetButtonDown(Jump))
-        {
-            jump();
-        }
-
-
-
-        if (Input.GetButtonUp(Crouch))
-        {
-            crouch(false);
+            rb.velocity = Vector3.zero;
         }
     }
+
 
     void moving()
     {

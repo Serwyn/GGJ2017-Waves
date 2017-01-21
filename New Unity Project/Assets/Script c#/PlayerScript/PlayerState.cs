@@ -14,8 +14,11 @@ public class PlayerState : MonoBehaviour {
     public float rpos;
     public Vector3 initPosition;
 
+    worldController wc;
+
     // Use this for initialization
     void Start () {
+        wc = Camera.main.GetComponent<worldController>();
         reset();
     }
 
@@ -24,12 +27,17 @@ public class PlayerState : MonoBehaviour {
         life = MAXLIFE;
         isLanded = false;
         this.transform.position = initPosition;
+        GetComponent<SpriteRenderer>().sprite = GetComponent<PlayerController>().normalSprite;
+        GetComponent<Animator>().enabled = false;
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-        relativePosition();
+        if (!wc.isPaused())
+        {
+            relativePosition();
+        }
 	}
 
     void OnCollisionStay(Collision coll)
