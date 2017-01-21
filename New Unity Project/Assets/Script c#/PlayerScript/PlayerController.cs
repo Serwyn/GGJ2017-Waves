@@ -10,10 +10,14 @@ public class PlayerController : MonoBehaviour {
     Rigidbody rb;
     PlayerState playerState;
     public GameObject otherPlayer;
+    public Sprite crouchedSprite;
+    public Sprite normalSprite;
+    public Animator walk;
 
     public string HorizontalMove;
     public string Jump;
     public string Crouch;
+
 
    
 
@@ -26,7 +30,7 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton(HorizontalMove))
+        if (Input.GetButtonDown(HorizontalMove))
         {
             horizontalMove();
         }
@@ -42,7 +46,12 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetButtonDown(Crouch))
         {
-            crouch();
+            crouch(true);
+        }
+
+        if (Input.GetButtonUp(Crouch))
+        {
+            crouch(false);
         }
     }
 
@@ -51,6 +60,8 @@ public class PlayerController : MonoBehaviour {
         if (!playerState.isCasting)
         {
             rb.velocity = new Vector3(0, rb.velocity.y, 0) + Vector3.right * Input.GetAxisRaw(HorizontalMove) * moveSpeed;
+            //this.GetComponent<Animator>().runtimeAnimatorController = walk;
+
         }
     }
 
@@ -66,8 +77,18 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void crouch()
+    public void crouch(bool crouched)
     {
+        playerState.isCrouched = crouched;
+        if (crouched)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = this.crouchedSprite;
+
+        }
+        else
+        {
+            this.GetComponent<SpriteRenderer>().sprite = this.normalSprite;
+        }
 
     }
 
