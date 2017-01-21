@@ -7,12 +7,14 @@ Project("{51410DB2-8570-737B-A495-110236DE2A7E}") = "New Unity Project", "Assemb
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "New Unity Project", "New Unity Project.csproj", "{BFD958C4-5209-89E8-D1A0-F25854A4DC74}"
+<<<<<<< HEAD
 =======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "New Unity Project.CSharp", "New Unity Project.CSharp.csproj", "{A484C350-0FDC-FFCA-CAEE-31FE2DC36B34}"
 >>>>>>> 0e057d5295f094201d9a612f28205317ae5cb3e0
 >>>>>>> 16dc02e34d27721efe8cac9af46077edbb1cf87b
+=======
+>>>>>>> 0df6ef6ac66169a089f1ddff682f85313c6a2d54
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,16 +23,20 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 <<<<<<< HEAD
+<<<<<<< HEAD
 		{B2B58FB2-4462-6B0C-A872-40DD957E5FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B2B58FB2-4462-6B0C-A872-40DD957E5FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2B58FB2-4462-6B0C-A872-40DD957E5FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2B58FB2-4462-6B0C-A872-40DD957E5FE0}.Release|Any CPU.Build.0 = Release|Any CPU
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> 0df6ef6ac66169a089f1ddff682f85313c6a2d54
 		{BFD958C4-5209-89E8-D1A0-F25854A4DC74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BFD958C4-5209-89E8-D1A0-F25854A4DC74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFD958C4-5209-89E8-D1A0-F25854A4DC74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFD958C4-5209-89E8-D1A0-F25854A4DC74}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 =======
 		{A484C350-0FDC-FFCA-CAEE-31FE2DC36B34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A484C350-0FDC-FFCA-CAEE-31FE2DC36B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -38,6 +44,8 @@ Global
 		{A484C350-0FDC-FFCA-CAEE-31FE2DC36B34}.Release|Any CPU.Build.0 = Release|Any CPU
 >>>>>>> 0e057d5295f094201d9a612f28205317ae5cb3e0
 >>>>>>> 16dc02e34d27721efe8cac9af46077edbb1cf87b
+=======
+>>>>>>> 0df6ef6ac66169a089f1ddff682f85313c6a2d54
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
