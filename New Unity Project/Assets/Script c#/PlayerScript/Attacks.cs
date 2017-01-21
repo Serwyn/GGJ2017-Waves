@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Attacks : MonoBehaviour {
 
+    public int rockNbr;
+    public int trumpNbr;
+
     public GameObject onde;
     public GameObject lowWave;
     public GameObject shield;
@@ -31,6 +34,8 @@ public class Attacks : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody>();
         ps = this.GetComponent<PlayerState>();
+        trumpNbr = 0;
+        rockNbr = 0;
 
 
     }

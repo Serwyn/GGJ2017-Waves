@@ -75,11 +75,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ScoreAffichage.cs" />
     <Compile Include="Assets\Script c#\PlayerScript\Attacks.cs" />
+    <Compile Include="Assets\Script c#\PlayerScript\GuitarScript.cs" />
     <Compile Include="Assets\Script c#\PlayerScript\PlayerController.cs" />
     <Compile Include="Assets\Script c#\PlayerScript\PlayerState.cs" />
     <Compile Include="Assets\Script c#\PlayerScript\TakingDamages.cs" />
+    <Compile Include="Assets\Script c#\PlayerScript\TrumpScript.cs" />
+    <Compile Include="Assets\Script c#\ScoreAffichage.cs" />
     <Compile Include="Assets\Script c#\Shield.cs" />
     <Compile Include="Assets\Script c#\UIScripts\LifeScript.cs" />
     <Compile Include="Assets\Script c#\UIScripts\StartMenuScript.cs" />
