@@ -13,6 +13,7 @@ public class ScoreAffichage : MonoBehaviour {
     public GameObject imGauche;
     public GameObject imDroite;
 
+
     public int score1;
     public int score2;
 
@@ -23,6 +24,11 @@ public class ScoreAffichage : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        score1 = Camera.main.GetComponent<worldController>().player1Winshare;
+        score2 = Camera.main.GetComponent<worldController>().player2Winshare;
+
+
 
         Image imG = imGauche.GetComponent<Image>();
         Image imD = imDroite.GetComponent<Image>();

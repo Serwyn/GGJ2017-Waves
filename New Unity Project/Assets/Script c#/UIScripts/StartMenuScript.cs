@@ -13,10 +13,7 @@ public class StartMenuScript : MonoBehaviour {
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 
     public void StartButton()
     {

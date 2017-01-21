@@ -14,11 +14,7 @@ public class TakingDamages : MonoBehaviour
 
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-    
+
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "onde")
