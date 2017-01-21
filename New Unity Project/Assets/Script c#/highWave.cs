@@ -18,9 +18,6 @@ public class highWave : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-
-        Debug.Log("collision");
-
         if (col.gameObject.tag == "Player" || col.gameObject.tag == "Shield")
         {
             Destroy(this.gameObject);
