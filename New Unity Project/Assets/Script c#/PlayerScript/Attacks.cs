@@ -21,12 +21,16 @@ public class Attacks : MonoBehaviour {
     public float lowWaveSpeed;
     public float shieldTimer;
     private float shieldTime;
+
     public float blockingDelay;
+    private float lastCast;
+
+    public float lowDelay;
+    private float lastLow;
 
     private PlayerState ps;
     Rigidbody rb;
 
-    private float lastCast;
 
     worldController wc;
 
@@ -58,16 +62,20 @@ public class Attacks : MonoBehaviour {
             }
             if (Time.time - this.lastCast > this.blockingDelay)
             {
-                ps.isCasting = false;
+                ps.isCastingHigh = false;
+            }
+            if (Time.time - this.lastLow > this.lowDelay)
+            {
+                ps.isCastingLow = false;
             }
         }
     }
 
     void highAttack()
     {
-        if (!ps.isCasting && !ps.isCrouched)
+        if (!ps.isCastingHigh && !ps.isCrouched)
         {
-            ps.isCasting = true;
+            ps.isCastingHigh = true;
             rb.velocity = new Vector3(0, 0, 0);
             this.lastCast = Time.time;
             GameObject attack = Instantiate(onde, new Vector3(ondeLocation.transform.position.x, ondeLocation.transform.position.y, (transform.position.z + 1) % 2), Quaternion.identity);
@@ -96,11 +104,11 @@ public class Attacks : MonoBehaviour {
 
     void lowAttack()
     {
-        if (!ps.isCasting && !ps.isCrouched)
+        if (!ps.isCastingLow && !ps.isCrouched)
         {
-            ps.isCasting = true;
+            ps.isCastingLow = true;
             rb.velocity = new Vector3(0, 0, 0);
-            this.lastCast = Time.time;
+            this.lastLow = Time.time;
             GameObject attack = Instantiate(lowWave, new Vector3(lowWaveLocation.transform.position.x, lowWaveLocation.transform.position.y, (transform.position.z + 1) % 2), Quaternion.identity);
             try
             {
@@ -127,11 +135,7 @@ public class Attacks : MonoBehaviour {
 
     void shieldSpawn()
     {
-        if (!ps.isCasting)
-        {
-            ps.isCasting = true;
             rb.velocity = new Vector3(0, 0, 0);
-            this.lastCast = Time.time;
             if (Time.time - shieldTime > shieldTimer)
             {
                 shieldTime = Time.time;
@@ -155,7 +159,6 @@ public class Attacks : MonoBehaviour {
                     shield.transform.localEulerAngles = Vector3.up * 180;
                 }
             }
-        }
     }
 
 

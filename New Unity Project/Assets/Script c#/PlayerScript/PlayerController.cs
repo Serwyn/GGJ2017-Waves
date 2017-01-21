@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour {
 
     public void jump()
     {
-        if (playerState.isLanded)
+        if (playerState.isLanded && ! playerState.isCrouched)
         {
             rb.velocity = new Vector3(rb.velocity.x, 0, 0) + Vector3.up * jumpForce;
             playerState.isLanded = false;
@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour {
         if (playerState.isLanded)
         {
 
-            playerState.isCrouched = crouched;
+
             if (crouched && !playerState.isCrouched)
             {
                 BoxCollider boxco = this.GetComponent<BoxCollider>();
@@ -147,6 +147,7 @@ public class PlayerController : MonoBehaviour {
 
                 this.GetComponent<SpriteRenderer>().sprite = this.normalSprite;
             }
+            playerState.isCrouched = crouched;
         }
 
     }

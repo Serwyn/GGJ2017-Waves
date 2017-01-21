@@ -7,9 +7,10 @@ public class TakingDamages : MonoBehaviour
 
     PlayerState ps4;
     public float highWaveDamages;
+    public float lowWaveDamages;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         ps4 = this.GetComponent<PlayerState>();
 
     }
@@ -20,6 +21,10 @@ public class TakingDamages : MonoBehaviour
         if (col.gameObject.tag == "onde")
         {
             ps4.life -= highWaveDamages;
+        }
+        else if (col.gameObject.tag == "LowWave")
+        {
+            ps4.life -= lowWaveDamages;
         }
 
     }

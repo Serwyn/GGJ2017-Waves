@@ -7,7 +7,8 @@ public class PlayerState : MonoBehaviour {
     public bool isLanded;
     public bool hasJump;
     public bool isOnWall;
-    public bool isCasting;
+    public bool isCastingHigh;
+    public bool isCastingLow;
     public bool isCrouched;
     public const float MAXLIFE=100;
     public float life;
