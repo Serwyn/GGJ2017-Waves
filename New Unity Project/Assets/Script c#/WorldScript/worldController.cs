@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class worldController : MonoBehaviour {
 
+    public GameObject panel;
+
     public GameObject player1;
     public GameObject player2;
 
@@ -19,6 +21,7 @@ public class worldController : MonoBehaviour {
 	void Start () {
         player1State = player1.GetComponent<PlayerState>();
         player2State = player2.GetComponent<PlayerState>();
+        restartWorld();
 	}
 	
 	// Update is called once per frame
@@ -59,6 +62,15 @@ public class worldController : MonoBehaviour {
     }
     void endGame()
     {
-        //load end scene
+        panel.SetActive(true);
+    }
+    public void restartWorld()
+    {
+        panel.SetActive(false);
+        totalWin = 0;
+        player1Winshare = 0;
+        player2Winshare = 0;
+        player1State.reset();
+        player2State.reset();
     }
 }
