@@ -27,9 +27,12 @@ public class Attacks : MonoBehaviour {
     Rigidbody rb;
 
     private float lastCast;
-    
-	// Use this for initialization
-	void Start () {
+
+    worldController wc;
+
+    // Use this for initialization
+    void Start () {
+        wc = Camera.main.GetComponent<worldController>();
         rb = GetComponent<Rigidbody>();
         ps = this.GetComponent<PlayerState>();
 
@@ -37,23 +40,26 @@ public class Attacks : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown(HighAttack))
+        if (!wc.isPaused())
         {
-            highAttack();
-        }
+            if (Input.GetButtonDown(HighAttack))
+            {
+                highAttack();
+            }
 
-        if (Input.GetButtonDown(LowAttack))
-        {
-            lowAttack();
-        }
+            if (Input.GetButtonDown(LowAttack))
+            {
+                lowAttack();
+            }
 
-        if (Input.GetButtonDown(Shield))
-        {
-            shieldSpawn();
-        }
-        if (Time.time - this.lastCast > this.blockingDelay)
-        {
-            ps.isCasting = false;
+            if (Input.GetButtonDown(Shield))
+            {
+                shieldSpawn();
+            }
+            if (Time.time - this.lastCast > this.blockingDelay)
+            {
+                ps.isCasting = false;
+            }
         }
     }
 
