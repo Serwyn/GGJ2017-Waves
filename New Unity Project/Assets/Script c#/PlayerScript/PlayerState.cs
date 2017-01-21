@@ -7,15 +7,24 @@ public class PlayerState : MonoBehaviour {
     public bool isLanded;
     public bool hasJump;
     public bool isOnWall;
+    public bool isCasting;
     public const float MAXLIFE=100;
     public float life;
     public float rpos;
+    public Vector3 initPosition;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+        reset();
+    }
+
+    void reset()
+    {
         life = MAXLIFE;
         isLanded = false;
-	}
+        this.transform.position = initPosition;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {

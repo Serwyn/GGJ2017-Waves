@@ -15,8 +15,10 @@ public class PlayerController : MonoBehaviour {
     public string Jump;
     public string Crouch;
 
-	// Use this for initialization
-	void Start () {
+   
+
+    // Use this for initialization
+    void Start () {
         rb = GetComponent<Rigidbody>();
         playerState = GetComponent<PlayerState>();
 	}
@@ -46,15 +48,21 @@ public class PlayerController : MonoBehaviour {
 
     public void horizontalMove()
     {
-        rb.velocity =new Vector3(0, rb.velocity.y, 0) + Vector3.right * Input.GetAxisRaw(HorizontalMove) * moveSpeed;
+        if (!playerState.isCasting)
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, 0) + Vector3.right * Input.GetAxisRaw(HorizontalMove) * moveSpeed;
+        }
     }
 
     public void jump()
     {
-        if (playerState.isLanded)
+        if (!playerState.isCasting)
         {
-            rb.velocity = new Vector3(rb.velocity.x, 0, 0) + Vector3.up * jumpForce;
-            playerState.isLanded = false;
+            if (playerState.isLanded)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, 0, 0) + Vector3.up * jumpForce;
+                playerState.isLanded = false;
+            }
         }
     }
 
