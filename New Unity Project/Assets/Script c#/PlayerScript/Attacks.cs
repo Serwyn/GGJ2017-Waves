@@ -23,10 +23,13 @@ public class Attacks : MonoBehaviour {
     public float blockingDelay;
 
     private PlayerState ps;
+    Rigidbody rb;
+
     private float lastCast;
     
 	// Use this for initialization
 	void Start () {
+        rb = GetComponent<Rigidbody>();
         ps = this.GetComponent<PlayerState>();
 
 
@@ -59,6 +62,7 @@ public class Attacks : MonoBehaviour {
         if (!ps.isCasting && !ps.isCrouched)
         {
             ps.isCasting = true;
+            rb.velocity = new Vector3(0, 0, 0);
             this.lastCast = Time.time;
             GameObject attack = Instantiate(onde, new Vector3(ondeLocation.transform.position.x, ondeLocation.transform.position.y, (transform.position.z + 1) % 2), Quaternion.identity);
             Rigidbody aRB = attack.GetComponent<Rigidbody>();
@@ -77,6 +81,7 @@ public class Attacks : MonoBehaviour {
         if (!ps.isCasting && !ps.isCrouched)
         {
             ps.isCasting = true;
+            rb.velocity = new Vector3(0, 0, 0);
             this.lastCast = Time.time;
             GameObject attack = Instantiate(lowWave, new Vector3(lowWaveLocation.transform.position.x, lowWaveLocation.transform.position.y, (transform.position.z + 1) % 2), Quaternion.identity);
             Rigidbody aRB = attack.GetComponent<Rigidbody>();
@@ -95,6 +100,7 @@ public class Attacks : MonoBehaviour {
         if (!ps.isCasting)
         {
             ps.isCasting = true;
+            rb.velocity = new Vector3(0, 0, 0);
             this.lastCast = Time.time;
             if (Time.time - shieldTime > shieldTimer)
             {

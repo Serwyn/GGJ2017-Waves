@@ -82,6 +82,7 @@
     <Compile Include="Assets\Script c%23\Shield.cs" />
     <Compile Include="Assets\Script c%23\UIScripts\LifeScript.cs" />
     <Compile Include="Assets\Script c%23\UIScripts\StartMenuScript.cs" />
+    <Compile Include="Assets\Script c%23\UIScripts\inGameMenu.cs" />
     <Compile Include="Assets\Script c%23\WorldScript\worldController.cs" />
     <Compile Include="Assets\Script c%23\highWave.cs" />
     <Compile Include="Assets\Script c%23\lowWave.cs" />
