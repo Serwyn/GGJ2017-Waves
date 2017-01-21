@@ -52,6 +52,7 @@
      <Compile Include="Assets\Script c#\PlayerScript\TakingDamages.cs" />
      <Compile Include="Assets\Script c#\Shield.cs" />
      <Compile Include="Assets\Script c#\UIScripts\LifeScript.cs" />
+     <Compile Include="Assets\Script c#\UIScripts\StartMenuScript.cs" />
      <Compile Include="Assets\Script c#\highWave.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
