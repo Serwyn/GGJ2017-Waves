@@ -36,7 +36,7 @@ public class Attacks : MonoBehaviour {
 
     void highAttack()
     {
-        GameObject attack = Instantiate(onde, new Vector3(ondeLocation.transform.position.x, ondeLocation.transform.position.y, (ondeLocation.transform.position.z+1)%2), Quaternion.identity);
+        GameObject attack = Instantiate(onde, new Vector3(ondeLocation.transform.position.x, ondeLocation.transform.position.y, (transform.position.z+1)%2), Quaternion.identity);
         Rigidbody aRB = attack.GetComponent<Rigidbody>();
 
         float rpos = this.gameObject.GetComponent<PlayerState>().rpos;
@@ -52,7 +52,7 @@ public class Attacks : MonoBehaviour {
         if (Time.time - shieldTime > shieldTimer)
         {
             shieldTime = Time.time;
-            GameObject instanciatedShield = Instantiate(shield, new Vector3(shieldLocation.transform.position.x, shieldLocation.transform.position.y, shieldLocation.transform.position.z), Quaternion.identity);
+            GameObject instanciatedShield = Instantiate(shield, new Vector3(shieldLocation.transform.position.x, shieldLocation.transform.position.y, transform.position.z), Quaternion.identity);
             Rigidbody aRB = shield.GetComponent<Rigidbody>();
             float rpos = this.gameObject.GetComponent<PlayerState>().rpos;
             if (rpos < 0)
