@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour {
 
     void moving()
     {
-        if (!this.GetComponent<Animator>().enabled && playerState.isLanded && !playerState.isCrouched)
+        if (!this.GetComponent<Animator>().enabled && !playerState.isCrouched && !playerState.isCasting)
         {
             horizontalMove(true);
         }
@@ -71,10 +71,10 @@ public class PlayerController : MonoBehaviour {
     {
         if (move)
         {
-            if (!playerState.isCasting)
+            if (!playerState.isCasting && !playerState.isCrouched)
             {
                 rb.velocity = new Vector3(0, rb.velocity.y, 0) + Vector3.right * Input.GetAxisRaw(HorizontalMove) * moveSpeed;
-                if (playerState.isLanded && !playerState.isCrouched)
+                if (playerState.isLanded)
                 {
                     this.GetComponent<Animator>().enabled = true;
                 }
@@ -85,8 +85,10 @@ public class PlayerController : MonoBehaviour {
         {
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
             this.GetComponent<Animator>().enabled = false;
-
-            this.GetComponent<SpriteRenderer>().sprite = this.normalSprite;
+            if (playerState.isLanded && !playerState.isCrouched)
+            {
+                this.GetComponent<SpriteRenderer>().sprite = this.normalSprite;
+            }
 
         }
     }
@@ -100,6 +102,7 @@ public class PlayerController : MonoBehaviour {
                 rb.velocity = new Vector3(rb.velocity.x, 0, 0) + Vector3.up * jumpForce;
                 playerState.isLanded = false;
                 this.GetComponent<Animator>().enabled = false;
+                this.GetComponent<SpriteRenderer>().sprite = this.normalSprite;
             }
         }
     }
@@ -107,7 +110,7 @@ public class PlayerController : MonoBehaviour {
     public void crouch(bool crouched)
     {
         playerState.isCrouched = crouched;
-        if (crouched)
+        if (crouched && playerState.isLanded)
         {
             this.GetComponent<SpriteRenderer>().sprite = this.crouchedSprite;
             this.GetComponent<Animator>().enabled = false;
