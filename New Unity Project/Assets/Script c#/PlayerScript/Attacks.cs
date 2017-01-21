@@ -11,6 +11,8 @@ public class Attacks : MonoBehaviour {
     public string Shield;
 
     public float highWaveSpeed = 8;
+    public float shieldTimer;
+    private float shieldTime;
     
 	// Use this for initialization
 	void Start () {
@@ -44,15 +46,17 @@ public class Attacks : MonoBehaviour {
 
     void shieldSpawn()
     {
-        GameObject instanciatedShield = Instantiate(shield, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-        Rigidbody aRB = shield.GetComponent<Rigidbody>();
-
-        float rpos = this.gameObject.GetComponent<PlayerState>().rpos;
-        if (rpos < 0)
+        if (Time.time - shieldTime > shieldTimer)
         {
-            shield.transform.localEulerAngles = Vector3.up * 180;
+            shieldTime = Time.time;
+            GameObject instanciatedShield = Instantiate(shield, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+            Rigidbody aRB = shield.GetComponent<Rigidbody>();
+            float rpos = this.gameObject.GetComponent<PlayerState>().rpos;
+            if (rpos < 0)
+            {
+                shield.transform.localEulerAngles = Vector3.up * 180;
+            }
         }
-        aRB.velocity = Vector3.right * highWaveSpeed * Mathf.Sign(rpos);
     }
 
 
