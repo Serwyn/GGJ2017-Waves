@@ -21,10 +21,9 @@ public class StartMenuScript : MonoBehaviour {
         selectorPanel.SetActive(true);
 
     }
-    public void BackButton()
+    public void Credit()
     {
-        mainPanel.SetActive(true);
-        selectorPanel.SetActive(false);
+        
     }
 
     public void LounchGame()
