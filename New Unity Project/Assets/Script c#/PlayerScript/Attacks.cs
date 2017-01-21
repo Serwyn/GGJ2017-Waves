@@ -5,15 +5,19 @@ using UnityEngine;
 public class Attacks : MonoBehaviour {
 
     public GameObject onde;
+    public GameObject lowWave;
     public GameObject shield;
 
     public GameObject ondeLocation;
     public GameObject shieldLocation;
+    public GameObject lowWaveLocation;
 
     public string HighAttack;
+    public string LowAttack;
     public string Shield;
 
-    public float highWaveSpeed = 8;
+    public float highWaveSpeed;
+    public float lowWaveSpeed;
     public float shieldTimer;
     private float shieldTime;
     
@@ -28,6 +32,12 @@ public class Attacks : MonoBehaviour {
         {
             highAttack();
         }
+
+        if (Input.GetButtonDown(LowAttack))
+        {
+            lowAttack();
+        }
+
         if (Input.GetButtonDown(Shield))
         {
             shieldSpawn();
@@ -45,6 +55,19 @@ public class Attacks : MonoBehaviour {
             attack.transform.localEulerAngles = Vector3.up * 180;
         }
         aRB.velocity = Vector3.right * highWaveSpeed * Mathf.Sign(rpos);
+    }
+
+    void lowAttack()
+    {
+        GameObject attack = Instantiate(lowWave, new Vector3(lowWaveLocation.transform.position.x, lowWaveLocation.transform.position.y, (transform.position.z + 1) % 2), Quaternion.identity);
+        Rigidbody aRB = attack.GetComponent<Rigidbody>();
+
+        float rpos = this.gameObject.GetComponent<PlayerState>().rpos;
+        if (rpos < 0)
+        {
+            attack.transform.localEulerAngles = Vector3.up * 180;
+        }
+        aRB.velocity = Vector3.right * lowWaveSpeed * Mathf.Sign(rpos);
     }
 
     void shieldSpawn()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class highWave : MonoBehaviour {
 
 	// Use this for initialization
-    private float lifespan = 4.0f;
+    public float lifespan;
 	void Start () {
         Destroy(this.gameObject, lifespan);
 		
