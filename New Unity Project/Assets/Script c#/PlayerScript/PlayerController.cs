@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour {
     public GameObject otherPlayer;
     public Sprite crouchedSprite;
     public Sprite normalSprite;
-    public Animator walk;
 
     public string HorizontalMove;
     public string Jump;
@@ -32,11 +31,15 @@ public class PlayerController : MonoBehaviour {
     {
         if (Input.GetButtonDown(HorizontalMove))
         {
-            horizontalMove();
+            horizontalMove(true);
         }
-        else
+        else if (Input.GetButtonUp(HorizontalMove))
         {
-            rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
+            horizontalMove(false);
+        }
+        else if (Input.GetButton(HorizontalMove))
+        {
+            moving();
         };
 
         if (Input.GetButtonDown(Jump))
@@ -55,12 +58,35 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void horizontalMove()
+    void moving()
     {
-        if (!playerState.isCasting)
+        if (!this.GetComponent<Animator>().enabled && playerState.isLanded && !playerState.isCrouched)
         {
-            rb.velocity = new Vector3(0, rb.velocity.y, 0) + Vector3.right * Input.GetAxisRaw(HorizontalMove) * moveSpeed;
-            //this.GetComponent<Animator>().runtimeAnimatorController = walk;
+            horizontalMove(true);
+        }
+
+    }
+
+    public void horizontalMove(bool move)
+    {
+        if (move)
+        {
+            if (!playerState.isCasting)
+            {
+                rb.velocity = new Vector3(0, rb.velocity.y, 0) + Vector3.right * Input.GetAxisRaw(HorizontalMove) * moveSpeed;
+                if (playerState.isLanded && !playerState.isCrouched)
+                {
+                    this.GetComponent<Animator>().enabled = true;
+                }
+
+            }
+        }
+        else
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            this.GetComponent<Animator>().enabled = false;
+
+            this.GetComponent<SpriteRenderer>().sprite = this.normalSprite;
 
         }
     }
@@ -73,6 +99,7 @@ public class PlayerController : MonoBehaviour {
             {
                 rb.velocity = new Vector3(rb.velocity.x, 0, 0) + Vector3.up * jumpForce;
                 playerState.isLanded = false;
+                this.GetComponent<Animator>().enabled = false;
             }
         }
     }
@@ -83,6 +110,8 @@ public class PlayerController : MonoBehaviour {
         if (crouched)
         {
             this.GetComponent<SpriteRenderer>().sprite = this.crouchedSprite;
+            this.GetComponent<Animator>().enabled = false;
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
 
         }
         else
