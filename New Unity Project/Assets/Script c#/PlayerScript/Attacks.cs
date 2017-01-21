@@ -139,7 +139,7 @@ public class Attacks : MonoBehaviour {
             if (Time.time - shieldTime > shieldTimer)
             {
                 shieldTime = Time.time;
-                GameObject instanciatedShield = Instantiate(shield, new Vector3(shieldLocation.transform.position.x, shieldLocation.transform.position.y, int(transform.position.z + 0.5)), Quaternion.identity);
+                GameObject instanciatedShield = Instantiate(shield, new Vector3(shieldLocation.transform.position.x, shieldLocation.transform.position.y, (int)(transform.position.z + 0.5)), Quaternion.identity);
                 try
                 {
                     instanciatedShield.GetComponent<Shield>().PlayAudioSource(GetComponent<TrumpScript>().getTrumpSound());
