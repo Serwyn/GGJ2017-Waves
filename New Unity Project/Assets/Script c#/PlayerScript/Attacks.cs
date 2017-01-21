@@ -56,7 +56,7 @@ public class Attacks : MonoBehaviour {
 
     void highAttack()
     {
-        if (!ps.isCasting)
+        if (!ps.isCasting && !ps.isCrouched)
         {
             ps.isCasting = true;
             this.lastCast = Time.time;
@@ -74,7 +74,7 @@ public class Attacks : MonoBehaviour {
 
     void lowAttack()
     {
-        if (!ps.isCasting)
+        if (!ps.isCasting && !ps.isCrouched)
         {
             ps.isCasting = true;
             this.lastCast = Time.time;
