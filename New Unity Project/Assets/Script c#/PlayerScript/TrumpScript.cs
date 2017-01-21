@@ -17,6 +17,7 @@ public class TrumpScript : MonoBehaviour {
     public AudioClip getTrumpSound()
     {
         AudioClip sound = trump[trumpNbr % trump.Count];
+        trumpNbr += 1;
         return sound;
     }
 
