@@ -76,7 +76,7 @@ public class Attacks : MonoBehaviour {
         if (!ps.isCastingHigh && !ps.isCrouched)
         {
             ps.isCastingHigh = true;
-            rb.velocity = new Vector3(0, 0, 0);
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
             this.lastCast = Time.time;
             GameObject attack = Instantiate(onde, new Vector3(ondeLocation.transform.position.x, ondeLocation.transform.position.y, ((int)(transform.position.z + 0.5) + 1) % 2), Quaternion.identity);
             try
@@ -109,7 +109,7 @@ public class Attacks : MonoBehaviour {
         if (!ps.isCastingLow && !ps.isCrouched)
         {
             ps.isCastingLow = true;
-            rb.velocity = new Vector3(0, 0, 0);
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
             this.lastLow = Time.time;
             GameObject attack = Instantiate(lowWave, new Vector3(lowWaveLocation.transform.position.x, lowWaveLocation.transform.position.y, ((int)(transform.position.z+0.5) + 1) % 2), Quaternion.identity);
             try
@@ -139,7 +139,7 @@ public class Attacks : MonoBehaviour {
 
     void shieldSpawn()
     {
-            rb.velocity = new Vector3(0, 0, 0);
+        rb.velocity = new Vector3(0, rb.velocity.y, 0);
             if (Time.time - shieldTime > shieldTimer)
             {
                 shieldTime = Time.time;

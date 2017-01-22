@@ -21,9 +21,9 @@ public class worldController : MonoBehaviour {
     public float endManche2Pause;
 
     float timePause = 0;
-    bool isPaused1;
-    bool isPaused2;
-    bool isPaused3;
+    public bool isPaused1;
+    public bool isPaused2;
+    public bool isPaused3;
 
     public Image Ready;
     public Image Go;
@@ -31,9 +31,6 @@ public class worldController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        isPaused1 = true;
-        isPaused2 = false;
-        isPaused3 = false;
         player1State = player1.GetComponent<PlayerState>();
         player2State = player2.GetComponent<PlayerState>();
         restartWorld();
@@ -59,18 +56,18 @@ public class worldController : MonoBehaviour {
                 //start death animation
                 player1win();
             }
-            if (Go.enabled==true && Time.realtimeSinceStartup - timePause > (endManche2Pause + 1.5))
+            if (Go.enabled==true && Time.time - timePause > (endManche2Pause + 1.5))
             {
                 Go.enabled = false;
             }
         }
         else {
-            if (isPaused1 && Time.realtimeSinceStartup - timePause > endManche1Pause)
+            if (isPaused1 && (Time.time - timePause) > endManche1Pause)
             {
                 endManche();
             }
 
-            if (isPaused2 && Time.realtimeSinceStartup - timePause > endManche2Pause)
+            if (isPaused2 && (Time.time - timePause) > endManche2Pause)
             {
                 Ready.enabled = false;
                 Go.enabled = true;
@@ -115,7 +112,7 @@ public class worldController : MonoBehaviour {
             return;
         }
 
-        if (isPaused1 == false)
+        if (!isPaused1)
         {
             timePause = Time.time;
             isPaused1 = true;
@@ -142,16 +139,12 @@ public class worldController : MonoBehaviour {
         panel.SetActive(false);
         isPaused3 = false;
         isPaused2 = false;
-        isPaused1 = false;
+        isPaused1 = true;
         totalWin = 0;
         player1Winshare = 0;
         player2Winshare = 0;
         player1State.reset();
         player2State.reset();
-        Ready.enabled = true;
-
-        timePause = Time.time;
-        isPaused2 = true;
     }
 
 
