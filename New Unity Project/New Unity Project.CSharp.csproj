@@ -81,9 +81,9 @@
     <Compile Include="Assets\Script c#\PlayerScript\PlayerState.cs" />
     <Compile Include="Assets\Script c#\PlayerScript\TakingDamages.cs" />
     <Compile Include="Assets\Script c#\PlayerScript\TrumpScript.cs" />
-    <Compile Include="Assets\Script c#\ScoreAffichage.cs" />
     <Compile Include="Assets\Script c#\Shield.cs" />
     <Compile Include="Assets\Script c#\UIScripts\LifeScript.cs" />
+    <Compile Include="Assets\Script c#\UIScripts\ScoreAffichage.cs" />
     <Compile Include="Assets\Script c#\UIScripts\StartMenuScript.cs" />
     <Compile Include="Assets\Script c#\UIScripts\inGameMenu.cs" />
     <Compile Include="Assets\Script c#\WorldScript\soundList.cs" />
