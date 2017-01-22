@@ -43,7 +43,7 @@ public class superAttack : MonoBehaviour {
                 Vector3 position = baliseG.transform.position + Random.value*(baliseD.transform.position-baliseG.transform.position);
                 Debug.Log(position);
                 GameObject croche = Instantiate(Croche, new Vector3(position.x, position.y, ((int)(superingPlayer.transform.position.z + 0.5) + 1) % 2), Quaternion.identity);
-                croche.GetComponent<Rigidbody>().velocity = new Vector3(0, -crocheSpeed*Random.Range(0.8f, 1), 0);
+                croche.GetComponent<Rigidbody>().velocity = new Vector3(0, -crocheSpeed*Random.Range(0.6f, 1), 0);
             }
         }
 
