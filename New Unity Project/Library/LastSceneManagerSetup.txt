@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scene/MoonScene.unity
-=======
 - path: Assets/Scene/GGJ2017-Waves.unity
->>>>>>> c60b4f6e70aca47905bb64865bd936f412557c18
   isLoaded: 1
   isActive: 1
