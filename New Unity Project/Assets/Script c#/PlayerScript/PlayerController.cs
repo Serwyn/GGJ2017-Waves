@@ -42,12 +42,26 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (playerState.isLanded)
+        {
+            rb.velocity = Vector3.zero;
+            rb.useGravity = false;
+        }
+        else
+        {
+            rb.useGravity = true;
+        }
         if (!wc.isPaused())
 
         {
             if (playerState.isLanded)
             {
                 rb.velocity = Vector3.zero;
+                rb.useGravity = false;
+            }
+            else
+            {
+                rb.useGravity = true;
             }
             if (!playerState.sa.supering || playerState.sa.superingPlayer != gameObject)
             {
@@ -137,6 +151,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (!playerState.isCrouched)
             {
+                rb.useGravity = true;
                 rb.velocity = new Vector3(0, rb.velocity.y, 0) + Vector3.right * Input.GetAxisRaw(HorizontalMove) * moveSpeed;
                 //Si on veut display le sprite d'attaque
                 if (Time.time - this.GetComponent<Attacks>().lastCast < attakSpriteDelay || Time.time - this.GetComponent<Attacks>().lastLow < attakSpriteDelay || Time.time - this.GetComponent<Attacks>().shieldTime < attakSpriteDelay)
