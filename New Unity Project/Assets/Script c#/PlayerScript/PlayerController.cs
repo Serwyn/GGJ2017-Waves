@@ -18,7 +18,9 @@ public class PlayerController : MonoBehaviour {
     public string HorizontalMove;
     public string Jump;
     public string Crouch;
+    public string Super;
     worldController wc;
+    
 
    
 
@@ -34,35 +36,59 @@ public class PlayerController : MonoBehaviour {
     {
         if (!wc.isPaused())
         {
-            if (Input.GetButton(HorizontalMove))
+            if (!playerState.sa.supering || playerState.sa.superingPlayer != gameObject)
             {
-                horizontalMove(true);
+                if (!playerState.isHit)
+                {
+                    if (!playerState.sa.supering && playerState.isLanded && !playerState.isCrouched && Input.GetButtonDown(Super))
+                    {
+                        playerState.sa.supering = true;
+                        playerState.sa.superingStart = Time.time;
+                        playerState.sa.superingPlayer = gameObject;
+
+                        rb.velocity = Vector3.zero;
+                        this.GetComponent<SpriteRenderer>().sprite = this.crouchedSprite;
+                        this.GetComponent<Animator>().enabled = false;
+
+                    }
+
+
+                    else
+                    {
+                        if (Input.GetButton(HorizontalMove))
+                        {
+                            horizontalMove(true);
+                        }
+                        else if (playerState.isLanded && !playerState.isCrouched)
+                        {
+                            this.GetComponent<SpriteRenderer>().sprite = this.normalSprite;
+                            horizontalMove(false);
+                        };
+                        if (Input.GetButtonDown(Crouch))
+                        {
+                            crouch(true);
+                        }
+
+                        if (Input.GetButtonDown(Jump))
+                        {
+                            jump();
+                        }
+
+
+
+                        if (Input.GetButtonUp(Crouch))
+                        {
+                            crouch(false);
+                        }
+                    }
+                }
             }
-            else if (Input.GetButtonUp(HorizontalMove))
+            else//sa.supering
             {
-                horizontalMove(false);
-            }
+                if (playerState.sa.superingPlayer != gameObject)
+                {
 
-
-            else if (playerState.isLanded && !playerState.isCrouched)
-            {
-                this.GetComponent<SpriteRenderer>().sprite = this.normalSprite;
-            };
-            if (Input.GetButtonDown(Crouch))
-            {
-                crouch(true);
-            }
-
-            if (Input.GetButtonDown(Jump))
-            {
-                jump();
-            }
-
-
-
-            if (Input.GetButtonUp(Crouch))
-            {
-                crouch(false);
+                }
             }
         }
         else if (playerState.isLanded)

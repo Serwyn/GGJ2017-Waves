@@ -5,21 +5,25 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour {
 
     public bool isLanded;
+    public bool isHit;
     public bool hasJump;
     public bool isOnWall;
     public bool isCastingHigh;
     public bool isCastingLow;
     public bool isCrouched;
+    public int supering;
     public const float MAXLIFE=100;
     public float life;
     public float rpos;
     public Vector3 initPosition;
+    public superAttack sa;
 
     worldController wc;
 
     // Use this for initialization
     void Start () {
         wc = Camera.main.GetComponent<worldController>();
+        sa = Camera.main.GetComponent<superAttack>();
         reset();
     }
 
@@ -27,6 +31,7 @@ public class PlayerState : MonoBehaviour {
     {
         life = MAXLIFE;
         isLanded = true;
+        isHit = false;
         this.transform.position = initPosition;
         GetComponent<SpriteRenderer>().sprite = GetComponent<PlayerController>().normalSprite;
         GetComponent<Animator>().enabled = false;
