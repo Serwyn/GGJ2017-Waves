@@ -26,7 +26,7 @@ public class Shield : MonoBehaviour {
 
     void OnTriggerEnter(Collider coll)
     {
-        if (coll.tag != "player1" && coll.tag != "player1")
+        if (coll.tag != "Player")
         {
             if (transform.position.z == 1)
             {

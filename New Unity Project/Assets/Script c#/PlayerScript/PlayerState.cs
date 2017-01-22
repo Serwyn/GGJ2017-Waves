@@ -33,6 +33,8 @@ public class PlayerState : MonoBehaviour {
     {
         life = MAXLIFE;
         isLanded = true;
+        isCrouched = false;
+        hasJump = false;
         isHit = false;
         this.transform.position = initPosition;
         GetComponent<SpriteRenderer>().sprite = GetComponent<PlayerController>().normalSprite;
