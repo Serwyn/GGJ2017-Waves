@@ -81,13 +81,15 @@ public class Attacks : MonoBehaviour {
             GameObject attack = Instantiate(onde, new Vector3(ondeLocation.transform.position.x, ondeLocation.transform.position.y, ((int)(transform.position.z + 0.5) + 1) % 2), Quaternion.identity);
             try
             {
-                attack.GetComponent<highWave>().PlayAudioSource(GetComponent<TrumpScript>().getTrumpSound());
+                AudioClip audio = GetComponent<TrumpScript>().getTrumpSound();
+                AudioSource.PlayClipAtPoint(audio, Vector3.zero, 0.7f);
 
             }
             catch { }
             try
             {
-                attack.GetComponent<highWave>().PlayAudioSource(GetComponent<GuitarScript>().getGuitSound());
+                AudioClip audio = GetComponent<GuitarScript>().getGuitSound();
+                AudioSource.PlayClipAtPoint(audio, Vector3.zero, 1f);
 
             }
             catch { }
@@ -112,13 +114,15 @@ public class Attacks : MonoBehaviour {
             GameObject attack = Instantiate(lowWave, new Vector3(lowWaveLocation.transform.position.x, lowWaveLocation.transform.position.y, ((int)(transform.position.z+0.5) + 1) % 2), Quaternion.identity);
             try
             {
-                attack.GetComponent<lowWave>().PlayAudioSource(GetComponent<TrumpScript>().getTrumpSound());
+                AudioClip audio = GetComponent<TrumpScript>().getTrumpSound();
+                AudioSource.PlayClipAtPoint(audio, Vector3.zero, 0.7f);
 
             }
             catch { }
             try
             {
-                attack.GetComponent<lowWave>().PlayAudioSource(GetComponent<GuitarScript>().getGuitSound());
+                AudioClip audio = GetComponent<GuitarScript>().getGuitSound();
+                AudioSource.PlayClipAtPoint(audio, Vector3.zero, 1f);
 
             }
             catch { }
@@ -142,13 +146,15 @@ public class Attacks : MonoBehaviour {
                 GameObject instanciatedShield = Instantiate(shield, new Vector3(shieldLocation.transform.position.x, shieldLocation.transform.position.y, (int)(transform.position.z + 0.5)), Quaternion.identity);
                 try
                 {
-                    instanciatedShield.GetComponent<Shield>().PlayAudioSource(GetComponent<TrumpScript>().getTrumpSound());
+                AudioClip audio = GetComponent<TrumpScript>().getTrumpSound();
+                AudioSource.PlayClipAtPoint(audio, Vector3.zero, 0.7f);
 
                 }
                 catch { }
                 try
                 {
-                    instanciatedShield.GetComponent<Shield>().PlayAudioSource(GetComponent<GuitarScript>().getGuitSound());
+                AudioClip audio = GetComponent<GuitarScript>().getGuitSound();
+                AudioSource.PlayClipAtPoint(audio,Vector3.zero, 1f);
 
                 }
                 catch { }

@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scene/GGJ2017-Waves.unity
-=======
-- path: Assets/Scene/StartScene.unity
->>>>>>> 17c5b299dbcc9e6dc9fd97c6ee78ae2254cf84c4
   isLoaded: 1
   isActive: 1
