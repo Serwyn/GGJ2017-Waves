@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scene/StartScene.unity
+- path: Assets/Scene/GGJ2017-Waves.unity
   isLoaded: 1
   isActive: 1

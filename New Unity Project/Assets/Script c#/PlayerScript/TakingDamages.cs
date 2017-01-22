@@ -61,10 +61,12 @@ public class TakingDamages : MonoBehaviour
         if (rpos < 0)
         {
             rb.velocity = new Vector3(GetComponent<PlayerController>().moveSpeed, GetComponent<PlayerController>().jumpForce/4 , 0);
+            ps4.isLanded = false;
         }
         else
         {
             rb.velocity = new Vector3(-GetComponent<PlayerController>().moveSpeed, GetComponent<PlayerController>().jumpForce/4, 0);
+            ps4.isLanded = false;
         }
         ps4.isHit = true;
         hitTimer = Time.time;

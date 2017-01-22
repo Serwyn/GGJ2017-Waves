@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour {
         {
             if (playerState.isLanded)
             {
-                rb.velocity = Vector3.zero;
                 rb.useGravity = false;
             }
             else

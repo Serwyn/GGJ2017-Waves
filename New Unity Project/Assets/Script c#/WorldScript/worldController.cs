@@ -145,6 +145,9 @@ public class worldController : MonoBehaviour {
         player2Winshare = 0;
         player1State.reset();
         player2State.reset();
+        player1State.mana = 0;
+        player2State.mana = 0;
+
     }
 
 
