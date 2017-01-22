@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject lueure;
 
+    public AudioClip countdown;
+
     public string HorizontalMove;
     public string Jump;
     public string Crouch;
@@ -41,7 +43,12 @@ public class PlayerController : MonoBehaviour {
     void Update()
     {
         if (!wc.isPaused())
+
         {
+            if (playerState.isLanded)
+            {
+                rb.velocity = Vector3.zero;
+            }
             if (!playerState.sa.supering || playerState.sa.superingPlayer != gameObject)
             {
                 if (!playerState.isHit)
@@ -58,6 +65,7 @@ public class PlayerController : MonoBehaviour {
                         this.GetComponent<Animator>().enabled = false;
                         lueure.transform.position = new Vector3(transform.position.x, lueure.transform.position.y, lueure.transform.position.z);
                         lueure.GetComponent<SpriteRenderer>().enabled = true;
+                        AudioSource.PlayClipAtPoint(countdown, Vector3.zero, 1f);
 
                     }
 

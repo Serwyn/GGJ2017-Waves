@@ -37,7 +37,7 @@ public class superAttack : MonoBehaviour {
                 lueure.GetComponent<SpriteRenderer>().enabled = false;
             }
 
-            if (Time.time - superingStart > doneCroches * superingDuration / (float)nbCroches)
+            if (Time.time - superingStart > doneCroches * (superingDuration-1) / (float)nbCroches)
             {
                 doneCroches += 1;
                 Vector3 position = baliseG.transform.position + Random.value*(baliseD.transform.position-baliseG.transform.position);
