@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -69,9 +66,6 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -89,6 +83,7 @@
     <Compile Include="Assets\Script c#\PlayerScript\TrumpScript.cs" />
     <Compile Include="Assets\Script c#\PlayerScript\landedCheck.cs" />
     <Compile Include="Assets\Script c#\Shield.cs" />
+    <Compile Include="Assets\Script c#\SuperAtk.cs" />
     <Compile Include="Assets\Script c#\UIScripts\LifeScript.cs" />
     <Compile Include="Assets\Script c#\UIScripts\ScoreAffichage.cs" />
     <Compile Include="Assets\Script c#\UIScripts\SelectScene.cs" />
@@ -96,6 +91,7 @@
     <Compile Include="Assets\Script c#\UIScripts\SuperScript.cs" />
     <Compile Include="Assets\Script c#\UIScripts\inGameMenu.cs" />
     <Compile Include="Assets\Script c#\WorldScript\soundList.cs" />
+    <Compile Include="Assets\Script c#\WorldScript\superAttack.cs" />
     <Compile Include="Assets\Script c#\WorldScript\worldController.cs" />
     <Compile Include="Assets\Script c#\highWave.cs" />
     <Compile Include="Assets\Script c#\lowWave.cs" />

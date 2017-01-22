@@ -8,6 +8,7 @@ public class TakingDamages : MonoBehaviour
     PlayerState ps4;
     public float highWaveDamages;
     public float lowWaveDamages;
+    public float superDamages;
     float hitTimer;
 
     // Use this for initialization
@@ -40,6 +41,12 @@ public class TakingDamages : MonoBehaviour
             else if (col.gameObject.tag == "LowWave")
             {
                 ps4.life -= lowWaveDamages;
+                pushBack();
+            }
+
+            else if (col.gameObject.tag == "SuperAtk")
+            {
+                ps4.life -= superDamages;
                 pushBack();
             }
         }
