@@ -30,6 +30,7 @@ public class PlayerState : MonoBehaviour {
         this.transform.position = initPosition;
         GetComponent<SpriteRenderer>().sprite = GetComponent<PlayerController>().normalSprite;
         GetComponent<Animator>().enabled = false;
+        relativePosition();
 
     }
 	
