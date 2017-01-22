@@ -28,7 +28,7 @@ public class StartMenuScript : MonoBehaviour {
 
     public void LounchGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GGJ2017-WAVES");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(GetComponent<SelectScene>().getSceneName());
     }
 
 }
