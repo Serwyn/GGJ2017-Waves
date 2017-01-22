@@ -26,7 +26,7 @@ public class PlayerState : MonoBehaviour {
     public void reset()
     {
         life = MAXLIFE;
-        isLanded = false;
+        isLanded = true;
         this.transform.position = initPosition;
         GetComponent<SpriteRenderer>().sprite = GetComponent<PlayerController>().normalSprite;
         GetComponent<Animator>().enabled = false;
@@ -42,20 +42,6 @@ public class PlayerState : MonoBehaviour {
         }
 	}
 
-    void OnCollisionStay(Collision coll)
-    {
-        if (coll.gameObject.tag == "Ground")
-        {
-            isLanded = true;
-        }
-    }
-    void OnCollisionExit(Collision coll)
-    {
-        if (coll.gameObject.tag == "Ground")
-        {
-            isLanded = false;
-        }
-    }
 
     void relativePosition()
     {
