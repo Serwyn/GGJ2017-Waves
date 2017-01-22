@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour {
     public Sprite normalSprite;
     public Sprite jumpSprite;
     public Sprite deadSprite;
+    public Sprite attackSprite;
+    public Sprite attackJumpSprite;
+
+    public float attakSpriteDelay;
 
     public GameObject lueure;
 
@@ -60,6 +64,7 @@ public class PlayerController : MonoBehaviour {
 
                     else
                     {
+
                         if (Input.GetButton(HorizontalMove))
                         {
                             horizontalMove(true);
@@ -68,6 +73,11 @@ public class PlayerController : MonoBehaviour {
                         {
                             this.GetComponent<SpriteRenderer>().sprite = this.normalSprite;
                             horizontalMove(false);
+                        }
+                        else if (!playerState.isCrouched && (Time.time - this.GetComponent<Attacks>().lastCast < attakSpriteDelay || Time.time - this.GetComponent<Attacks>().lastLow < attakSpriteDelay || Time.time - this.GetComponent<Attacks>().shieldTime < attakSpriteDelay))
+                        {
+                            this.GetComponent<Animator>().enabled = false;
+                            this.GetComponent<SpriteRenderer>().sprite = this.attackJumpSprite;
                         };
                         if (Input.GetButtonDown(Crouch))
                         {
@@ -85,6 +95,7 @@ public class PlayerController : MonoBehaviour {
                         {
                             crouch(false);
                         }
+
                     }
                 }
             }
@@ -119,7 +130,20 @@ public class PlayerController : MonoBehaviour {
             if (!playerState.isCrouched)
             {
                 rb.velocity = new Vector3(0, rb.velocity.y, 0) + Vector3.right * Input.GetAxisRaw(HorizontalMove) * moveSpeed;
-                if (playerState.isLanded)
+                //Si on veut display le sprite d'attaque
+                if (Time.time - this.GetComponent<Attacks>().lastCast < attakSpriteDelay || Time.time - this.GetComponent<Attacks>().lastLow < attakSpriteDelay || Time.time - this.GetComponent<Attacks>().shieldTime < attakSpriteDelay)
+                {
+                    if (playerState.isLanded) { 
+                    this.GetComponent<Animator>().enabled = false;
+                    this.GetComponent<SpriteRenderer>().sprite = this.attackSprite;
+                    }
+                    else
+                    {
+                        this.GetComponent<Animator>().enabled = false;
+                        this.GetComponent<SpriteRenderer>().sprite = this.attackJumpSprite;
+                    }
+                }
+                else if (playerState.isLanded)
                 {
                     this.GetComponent<Animator>().enabled = true;
                 }
@@ -130,7 +154,12 @@ public class PlayerController : MonoBehaviour {
         {
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
             this.GetComponent<Animator>().enabled = false;
-            if (playerState.isLanded && !playerState.isCrouched)
+            if (Time.time - this.GetComponent<Attacks>().lastCast < attakSpriteDelay || Time.time - this.GetComponent<Attacks>().lastLow < attakSpriteDelay || Time.time - this.GetComponent<Attacks>().shieldTime < attakSpriteDelay)
+            {
+                this.GetComponent<Animator>().enabled = false;
+                this.GetComponent<SpriteRenderer>().sprite = this.attackSprite;
+            }
+            else if (playerState.isLanded && !playerState.isCrouched)
             {
                 this.GetComponent<SpriteRenderer>().sprite = this.normalSprite;
             }

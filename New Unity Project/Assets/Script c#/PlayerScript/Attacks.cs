@@ -20,13 +20,13 @@ public class Attacks : MonoBehaviour {
     public float highWaveSpeed;
     public float lowWaveSpeed;
     public float shieldTimer;
-    private float shieldTime;
+    public float shieldTime;
 
     public float blockingDelay;
-    private float lastCast;
+    public float lastCast;
 
     public float lowDelay;
-    private float lastLow;
+    public float lastLow;
 
     private PlayerState ps;
     Rigidbody rb;
