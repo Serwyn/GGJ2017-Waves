@@ -218,6 +218,7 @@ public class PlayerController : MonoBehaviour {
                 this.GetComponent<SpriteRenderer>().sprite = this.crouchedSprite;
                 this.GetComponent<Animator>().enabled = false;
                 rb.velocity = new Vector3(0, 0, 0);
+                playerState.isCrouched = crouched;
 
             }
             else if(playerState.isCrouched)
@@ -228,8 +229,9 @@ public class PlayerController : MonoBehaviour {
                 boxco.center = new Vector3(boxco.center.x, boxco.center.y + size/2, boxco.center.z);
 
                 this.GetComponent<SpriteRenderer>().sprite = this.normalSprite;
+                playerState.isCrouched = crouched;
             }
-            playerState.isCrouched = crouched;
+            
         }
 
     }
