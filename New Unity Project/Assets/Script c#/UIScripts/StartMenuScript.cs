@@ -23,7 +23,7 @@ public class StartMenuScript : MonoBehaviour {
     }
     public void Credit()
     {
-        
+        Application.Quit();
     }
 
     public void LounchGame()
