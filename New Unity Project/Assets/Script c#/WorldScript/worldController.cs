@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class worldController : MonoBehaviour {
 
@@ -23,16 +24,20 @@ public class worldController : MonoBehaviour {
     bool isPaused1;
     bool isPaused2;
     bool isPaused3;
+
+    public Image Ready;
+    public Image Go;
    
 
     // Use this for initialization
     void Start () {
-        isPaused1 = false;
+        isPaused1 = true;
         isPaused2 = false;
         isPaused3 = false;
         player1State = player1.GetComponent<PlayerState>();
         player2State = player2.GetComponent<PlayerState>();
         restartWorld();
+        endManche();
 	}
 
 	public bool isPaused()
@@ -54,6 +59,10 @@ public class worldController : MonoBehaviour {
                 //start death animation
                 player1win();
             }
+            if (Go.enabled==true && Time.realtimeSinceStartup - timePause > (endManche2Pause + 1.5))
+            {
+                Go.enabled = false;
+            }
         }
         else {
             if (isPaused1 && Time.realtimeSinceStartup - timePause > endManche1Pause)
@@ -63,8 +72,11 @@ public class worldController : MonoBehaviour {
 
             if (isPaused2 && Time.realtimeSinceStartup - timePause > endManche2Pause)
             {
+                Ready.enabled = false;
+                Go.enabled = true;
                 isPaused2 = false;
             }
+
         }
 
     }
@@ -112,6 +124,7 @@ public class worldController : MonoBehaviour {
         isPaused1 = false;
         player1State.reset();
         player2State.reset();
+        Ready.enabled = true;
         
         timePause = Time.time;
         isPaused2 = true;
@@ -135,6 +148,10 @@ public class worldController : MonoBehaviour {
         player2Winshare = 0;
         player1State.reset();
         player2State.reset();
+        Ready.enabled = true;
+
+        timePause = Time.time;
+        isPaused2 = true;
     }
 
 
