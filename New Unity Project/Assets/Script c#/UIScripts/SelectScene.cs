@@ -17,7 +17,14 @@ public class SelectScene : MonoBehaviour {
 	
     public void leftArrow()
     {
-        sceneNbr -= 1;
+        if (sceneNbr == 0)
+        {
+            sceneNbr = preview.Count+1;
+        }
+        else
+        {
+            sceneNbr -= 1;
+        }
         updateScene();
     }
     public void rightArrow()
