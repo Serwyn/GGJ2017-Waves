@@ -8,24 +8,59 @@ public class TakingDamages : MonoBehaviour
     PlayerState ps4;
     public float highWaveDamages;
     public float lowWaveDamages;
+    float hitTimer;
 
     // Use this for initialization
     void Start () {
+        hitTimer = 0;
         ps4 = this.GetComponent<PlayerState>();
 
+    }
+    void Update()
+    {
+        if(Time.time-hitTimer > 0.3 && ps4.isHit)
+        {
+            ps4.isHit = false;
+        }
     }
 	
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "onde")
+        if (!ps4.sa.supering || ps4.sa.superingPlayer != gameObject)
         {
-            ps4.life -= highWaveDamages;
+            if (col.gameObject.tag == "onde")
+            {
+                ps4.life -= highWaveDamages;
+                pushBack();
+
+
+
+            }
+            else if (col.gameObject.tag == "LowWave")
+            {
+                ps4.life -= lowWaveDamages;
+                pushBack();
+            }
         }
-        else if (col.gameObject.tag == "LowWave")
+
+    }
+
+    void pushBack()
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+
+        float rpos = this.gameObject.GetComponent<PlayerState>().rpos;
+        if (rpos < 0)
         {
-            ps4.life -= lowWaveDamages;
+            rb.velocity = new Vector3(GetComponent<PlayerController>().moveSpeed, GetComponent<PlayerController>().jumpForce/4 , 0);
         }
+        else
+        {
+            rb.velocity = new Vector3(-GetComponent<PlayerController>().moveSpeed, GetComponent<PlayerController>().jumpForce/4, 0);
+        }
+        ps4.isHit = true;
+        hitTimer = Time.time;
 
     }
 

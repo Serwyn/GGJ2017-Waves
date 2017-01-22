@@ -73,7 +73,7 @@ public class Attacks : MonoBehaviour {
 
     void highAttack()
     {
-        if (!ps.isCastingHigh && !ps.isCrouched)
+        if (!ps.isCastingHigh && !ps.isCrouched && !ps.isHit && !ps.sa.supering)
         {
             ps.isCastingHigh = true;
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
@@ -106,7 +106,7 @@ public class Attacks : MonoBehaviour {
 
     void lowAttack()
     {
-        if (!ps.isCastingLow && !ps.isCrouched)
+        if (!ps.isCastingLow && !ps.isCrouched && !ps.isHit && !ps.sa.supering)
         {
             ps.isCastingLow = true;
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
@@ -140,7 +140,7 @@ public class Attacks : MonoBehaviour {
     void shieldSpawn()
     {
         rb.velocity = new Vector3(0, rb.velocity.y, 0);
-            if (Time.time - shieldTime > shieldTimer)
+            if (Time.time - shieldTime > shieldTimer && !ps.isCrouched && !ps.isHit && !ps.sa.supering)
             {
                 shieldTime = Time.time;
                 GameObject instanciatedShield = Instantiate(shield, new Vector3(shieldLocation.transform.position.x, shieldLocation.transform.position.y, (int)(transform.position.z + 0.5)), Quaternion.identity);
