@@ -14,6 +14,8 @@ public class PlayerState : MonoBehaviour {
     public int supering;
     public const float MAXLIFE=100;
     public float life;
+    public float MAXMANA;
+    public float mana;
     public float rpos;
     public Vector3 initPosition;
     public superAttack sa;

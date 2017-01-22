@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour {
     public Sprite jumpSprite;
     public Sprite deadSprite;
 
+    public GameObject lueure;
+
     public string HorizontalMove;
     public string Jump;
     public string Crouch;
@@ -40,8 +42,9 @@ public class PlayerController : MonoBehaviour {
             {
                 if (!playerState.isHit)
                 {
-                    if (!playerState.sa.supering && playerState.isLanded && !playerState.isCrouched && Input.GetButtonDown(Super))
+                    if (!playerState.sa.supering && playerState.isLanded && !playerState.isCrouched && Input.GetButtonDown(Super) && playerState.mana>=playerState.MAXMANA)
                     {
+                        playerState.mana = 0;
                         playerState.sa.supering = true;
                         playerState.sa.superingStart = Time.time;
                         playerState.sa.superingPlayer = gameObject;
@@ -49,6 +52,8 @@ public class PlayerController : MonoBehaviour {
                         rb.velocity = Vector3.zero;
                         this.GetComponent<SpriteRenderer>().sprite = this.crouchedSprite;
                         this.GetComponent<Animator>().enabled = false;
+                        lueure.transform.position = new Vector3(transform.position.x, lueure.transform.position.y, lueure.transform.position.z);
+                        lueure.GetComponent<SpriteRenderer>().enabled = true;
 
                     }
 

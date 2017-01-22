@@ -26,7 +26,7 @@ public class Shield : MonoBehaviour {
 
     void OnTriggerEnter(Collider coll)
     {
-        if(transform.position.z == 0)
+        if(transform.position.z == 1)
         {
             super1.GetComponent<SuperScript>().setFill(1);
 
